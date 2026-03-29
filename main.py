@@ -110,11 +110,7 @@ def load_keywords():
         if not os.path.exists(keywords_file):
             # 创建示例关键词文件
             default_keywords = [
-                "machine learning",
-                "deep learning",
-                "quantum computing",
-                "large language model",
-                "diffusion model"
+                "quantum"
             ]
             with open(keywords_file, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(default_keywords))
