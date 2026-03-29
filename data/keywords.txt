@@ -1,0 +1,37 @@
+# arXiv论文搜索关键词
+# 每行一个关键词，支持短语（用引号括起来）
+
+Quantum Dots
+nanofiber 
+# quantum
+# Neutral atom arrays
+# Optical tweezers
+# Rydberg atoms
+#Nanophotonics
+# Waveguide QED
+# Cavity QED
+# Photonic crystal waveguide
+# GaN-on-Sapphire
+# Microring resonator
+# Optical nanofiber
+# Chiral light-matter interaction
+# Rydberg blockade
+# Superradiance
+# Subradiance
+# Purcell enhancement
+# Non-reciprocal transport
+# Collective scattering
+# Vacuum Rabi splitting
+# Photon-photon interaction
+# Quantum network nodes
+# Quantum simulation
+# Rydberg logic gates
+# Single-photon routing
+# Quantum memory
+# Coherent state transfer
+# DDS control
+# FPGA quantum control
+# Laser cooling and trapping
+# Gray molasses
+# Raman sideband cooling
+# Surface-atom interaction
