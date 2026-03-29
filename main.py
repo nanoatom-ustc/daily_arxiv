@@ -42,12 +42,6 @@ def setup_logging(verbose=False):
 def run_search(keywords, days_back=1, max_results=30, categories=None):
     """
     运行搜索任务（不下载PDF）
-    
-    Args:
-        keywords: 关键词列表
-        days_back: 回溯天数（默认1天）
-        max_results: 最大结果数
-        categories: arXiv分类列表
     """
     logger = logging.getLogger(__name__)
     
@@ -59,12 +53,10 @@ def run_search(keywords, days_back=1, max_results=30, categories=None):
     logger.info("=" * 60)
     
     try:
-        # 初始化组件
         arxiv_client = ArxivClient()
         report_generator = ReportGenerator()
         email_sender = EmailSender()
         
-        # 搜索论文
         papers = arxiv_client.search_papers(
             keywords=keywords,
             max_results=max_results,
@@ -74,22 +66,20 @@ def run_search(keywords, days_back=1, max_results=30, categories=None):
         
         if not papers:
             logger.info("没有找到相关论文")
-            # 生成空报告并发送
             summary_content = f"# arXiv论文日报\n\n未找到匹配关键词的论文。\n\n关键词: {', '.join(keywords)}"
             if categories:
                 summary_content += f"\n分类: {', '.join(categories)}"
             email_sender.send_daily_summary(summary_content)
             return None
         
-        # 生成Markdown报告
+        # 生成完整Markdown报告
         report_file = report_generator.generate_markdown(papers, keywords)
-        # summary_file = report_generator.generate_daily_summary(papers, keywords)
         
-        # 读取摘要内容并发送邮件
-        if summary_file and os.path.exists(summary_file):
-            with open(summary_file, 'r', encoding='utf-8') as f:
-                summary_content = f.read()
-            email_sender.send_daily_summary(summary_content)
+        # 发送完整报告到邮箱
+        if report_file and os.path.exists(report_file):
+            with open(report_file, 'r', encoding='utf-8') as f:
+                report_content = f.read()
+            email_sender.send_daily_summary(report_content)
         
         logger.info(f"处理完成！共找到 {len(papers)} 篇论文")
         
