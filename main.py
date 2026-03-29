@@ -83,7 +83,7 @@ def run_search(keywords, days_back=1, max_results=30, categories=None):
         
         # 生成Markdown报告
         report_file = report_generator.generate_markdown(papers, keywords)
-        summary_file = report_generator.generate_daily_summary(papers, keywords)
+        # summary_file = report_generator.generate_daily_summary(papers, keywords)
         
         # 读取摘要内容并发送邮件
         if summary_file and os.path.exists(summary_file):
