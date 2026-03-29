@@ -131,7 +131,7 @@ def load_keywords():
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description='arXiv论文搜索器（仅摘要，不下载PDF）')
-    parser.add_argument('--days', '-d', type=int, default=1, help='回溯天数 (默认: 1)')
+    parser.add_argument('--days', '-d', type=int, default=7, help='回溯天数 (默认: 1)')
     parser.add_argument('--max', '-m', type=int, default=30, help='最大结果数 (默认: 30)')
     parser.add_argument('--verbose', '-v', action='store_true', help='详细输出')
     parser.add_argument('--category', '-c', action='append', help='指定arXiv分类，可多次使用')
