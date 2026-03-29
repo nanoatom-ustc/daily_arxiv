@@ -4,7 +4,6 @@ on:
   schedule:
   # cron: 分 时 日 月 周 (UTC时间)
   # UTC + 8 = 北京时间
-  
   - cron: '30 11 * * *'   
   workflow_dispatch:
     # 允许手动触发
@@ -37,13 +36,7 @@ jobs:
       run: |
         cat > data/keywords.txt << 'EOF'
         # 在这里修改你的关键词，每行一个
-        machine learning
-        deep learning
-        neural network
-        large language model
-        transformer
-        diffusion model
-        quantum machine learning
+        quantum
         # 添加更多关键词...
         EOF
     
@@ -54,7 +47,7 @@ jobs:
         RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
       run: |
         # 默认运行，使用关键词文件和默认分类
-        python main.py --days 1 --max 30
+        python main.py --days 1 --max 30 --category quant-ph  --category physics
         
         # 如果想指定分类，可以使用 --category 参数
         # 例如只搜索量子物理：python main.py --days 1 --max 30 --category quant-ph
